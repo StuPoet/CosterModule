@@ -1,0 +1,11 @@
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "天安泰式预约",
+    "navigationBarBackgroundColor": "#2e7d32",
+    "navigationBarTextStyle": "white",
+    "backgroundTextStyle": "light"
+  }
+}

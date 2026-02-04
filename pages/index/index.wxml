@@ -1,0 +1,51 @@
+<view class="page">
+  <view class="header">
+    <text class="title">{{studioName}}</text>
+    <text class="subtitle">泰式按摩工作室预约</text>
+  </view>
+
+  <view class="card">
+    <view class="section">
+      <text class="label">选择日期</text>
+      <picker mode="date" value="{{selectedDate}}" bindchange="handleDateChange">
+        <view class="picker">{{selectedDate}}</view>
+      </picker>
+    </view>
+
+    <view class="section">
+      <text class="label">预约时长</text>
+      <radio-group class="duration" bindchange="handleDurationChange">
+        <label wx:for="{{durationOptions}}" wx:key="value" class="duration-item">
+          <radio value="{{item.value}}" checked="{{item.value === selectedDuration}}" color="#2e7d32" />
+          <text>{{item.label}}</text>
+        </label>
+      </radio-group>
+    </view>
+
+    <view class="section">
+      <text class="label">可预约时间段（14:00 - 22:00）</text>
+      <view class="slots">
+        <button
+          wx:for="{{slots}}"
+          wx:key="label"
+          class="slot {{item.disabled ? 'disabled' : ''}} {{selectedSlot && selectedSlot.start === item.start ? 'active' : ''}}"
+          data-start="{{item.start}}"
+          data-end="{{item.end}}"
+          data-disabled="{{item.disabled}}"
+          bindtap="selectSlot"
+        >
+          {{item.label}}
+        </button>
+      </view>
+      <text class="hint">* 已预约的时段将自动不可选</text>
+    </view>
+  </view>
+
+  <view class="footer">
+    <view class="deposit">
+      <text>定金：￥{{depositAmount}}</text>
+      <text class="desc">预约成功后到店可抵扣服务费用</text>
+    </view>
+    <button class="submit" bindtap="submitReservation">确认预约</button>
+  </view>
+</view>
